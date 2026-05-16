@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Իլյա & Լիլիթ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Playfair+Display:ital,wght@0,400;1,400&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root { --text-dark: #2d2d2d; --accent-gold: #c5a36b; --bg-cream: #fdfbf7; }
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-cream); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
+        
+        section { width: 100%; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; padding: 40px 20px; }
+
+        .reveal { opacity: 0; transition: all 1.5s ease-out; }
+        .fade-in.active { opacity: 1; }
+        .slide-up { transform: translateY(40px); }
+        .slide-up.active { opacity: 1; transform: translateY(0); }
+        .zoom-in { transform: scale(0.9); }
+        .zoom-in.active { opacity: 1; transform: scale(1); }
+
+        #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; width: 45px; height: 45px; background: rgba(255,255,255,0.9); border: 1px solid var(--accent-gold); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--accent-gold); }
+        .music-playing { animation: rotate 4s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        .photo-section { justify-content: flex-end; padding-bottom: 15vh; background: #000; }
+        .bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
+        .bg-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(transparent 30%, rgba(0,0,0,0.8)); }
+        .photo-content { position: relative; z-index: 10; color: white; width: 100%; padding: 0 10px; }
+        
+        .main-names { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-weight: 300; 
+            font-size: 2.5rem; 
+            font-style: italic; 
+            letter-spacing: 1px; 
+            margin: 0; 
+            white-space: nowrap; 
+        }
+        @media (max-width: 370px) { .main-names { font-size: 2.1rem; } }
+
+        .std-title { font-family: 'Playfair Display', serif; font-size: 3rem; text-transform: uppercase; letter-spacing: 8px; line-height: 1.2; }
+        .std-script { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--accent-gold); }
+
+        .countdown { display: flex; justify-content: center; align-items: center; gap: 5px; margin: 30px 0; }
+        .time-block { display: flex; flex-direction: column; width: 55px; }
+        .number { font-size: 1.8rem; font-family: sans-serif; font-weight: 200; }
+        .colon { font-size: 1.5rem; padding-bottom: 15px; color: var(--accent-gold); font-weight: 300; }
+        .label { font-size: 0.65rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        .location-card { width: 100%; max-width: 340px; margin-bottom: 60px; }
+        .venue-img { width: 100%; aspect-ratio: 1/1; border-radius: 20px; object-fit: cover; margin-bottom: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .maps-btn { display: inline-block; padding: 12px 35px; border: 1px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; font-size: 0.8rem; border-radius: 30px; }
+
+        .rsvp-container { background: white; padding: 35px 25px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); width: 100%; max-width: 380px; text-align: left; }
+        .input-style { width: 100%; padding: 14px; border: 1px solid #f0f0f0; border-radius: 30px; background: #fbfbfb; margin-bottom: 12px; outline: none; font-family: inherit; font-size: 1rem; }
+        .submit-btn { width: 100%; padding: 18px; background: #1a1a1a; color: #fff; border: none; border-radius: 40px; font-size: 1.1rem; cursor: pointer; margin-top: 15px; letter-spacing: 1px; }
+
+        .scroll-hint { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); color: white; font-size: 0.7rem; letter-spacing: 5px; animation: bounce 2s infinite; opacity: 0.5; z-index: 10; }
+        @keyframes bounce { 0%, 100% {transform: translate(-50%, 0);} 50% {transform: translate(-50%, -10px);} }
+    </style>
+</head>
+<body>
+
+    <audio id="weddingMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+    <div id="musicControl" onclick="toggleMusic()">♪</div>
+
+    <section class="photo-section">
+        <div class="bg-img" style="background-image: url('1nkar.jpeg');"></div>
+        <div class="photo-content reveal fade-in">
+            <h1 class="main-names">Իլյա & Լիլիթ</h1>
+        </div>
+        <div class="scroll-hint">SCROLL</div>
+    </section>
+
+    <section>
+        <div class="reveal slide-up">
+            <div style="font-size: 1.4rem; font-style: italic; margin-bottom: 5px;">Մինչև հանդիպում մնացել է</div>
+            <div class="countdown">
+                <div class="time-block"><span class="number" id="days">00</span><span class="label">Օր</span></div>
+                <div class="colon">:</div>
+                <div class="time-block"><span class="number" id="hours">00</span><span class="label">Ժամ</span></div>
+                <div class="colon">:</div>
+                <div class="time-block"><span class="number" id="minutes">00</span><span class="label">Րոպե</span></div>
+                <div class="colon">:</div>
+                <div class="time-block"><span class="number" id="seconds">00</span><span class="label">Վրկ</span></div>
+            </div>
+            <p style="max-width: 320px; line-height: 1.6; font-size: 1.25rem; font-weight: 300; margin: 0 auto;">
+                Սրտանց հրավիրում ենք Ձեզ մեզ հետ միասին տոնելու մեր կյանքի ամենակարևոր և գեղեցիկ օրը՝ մեր հարսանիքը։
+            </p>
+        </div>
+    </section>
+
+    <section class="photo-section">
+        <div class="bg-img" style="background-image: url('2nkar.jpeg'); filter: grayscale(100%); opacity: 0.8;"></div>
+        <div class="photo-content reveal zoom-in">
+            <span class="std-title">Save</span><br>
+            <span class="std-script">the</span><br>
+            <span class="std-title">Date</span>
+            <div style="font-size: 1.5rem; letter-spacing: 6px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.4); padding-top: 15px;">01.08.2026</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="location-card reveal slide-up">
+            <img src="ekegheci.jpg" class="venue-img">
+            <h2 style="font-size: 2rem; font-family: 'Playfair Display', serif; margin: 0;">Պսակադրություն</h2>
+            <div style="color: var(--accent-gold); font-size: 1.2rem; margin: 10px 0;">Ժամը՝ 14:00</div>
+            <p style="color: #777; margin-bottom: 25px;">Սուրբ Մեսրոպ Մաշտոց եկեղեցի</p>
+            <a href="http://maps.google.com" class="maps-btn">Դիտել Քարտեզում</a>
+        </div>
+
+        <div class="location-card reveal slide-up">
+            <img src="hall1.jpg" class="venue-img">
+            <h2 style="font-size: 2rem; font-family: 'Playfair Display', serif; margin: 0;">Հանդիսություն</h2>
+            <div style="color: var(--accent-gold); font-size: 1.2rem; margin: 10px 0;">Ժամը՝ 17:30</div>
+            <p style="color: #777; margin-bottom: 25px;">«Արարատ Իվենթ Հոլլ»</p>
+            <a href="http://maps.google.com" class="maps-btn">Դիտել Քարտեզում</a>
+        </div>
+    </section>
+
+    <section class="photo-section">
+        <div class="bg-img" style="background-image: url('nkar3.jpeg');"></div>
+        <div class="photo-content reveal fade-in">
+            <div style="font-size: 2.2rem; font-family: 'Playfair Display', serif; font-style: italic;">Սպասում ենք Ձեզ</div>
+        </div>
+    </section>
+
+    <section style="background-color: #f8f6f2;" id="rsvp-section">
+        <div class="rsvp-container" id="rsvp-area">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; text-align: center; margin-bottom: 30px;">Հաստատեք Ձեր ներկայությունը</h2>
+            
+            <input type="text" id="name" class="input-style" placeholder="Անուն Ազգանուն">
+
+            <p style="font-size: 0.95rem; margin-bottom: 10px; font-weight: 500;">Կմասնակցե՞ք միջոցառմանը</p>
+            <div style="margin-bottom: 20px;">
+                <label style="margin-right: 20px;"><input type="radio" name="att" value="Այո"> Այո, սիրով</label>
+                <label><input type="radio" name="att" value="Ոչ"> Ցավոք, չեմ կարող</label>
+            </div>
+
+            <p style="font-size: 0.95rem; margin-bottom: 10px; font-weight: 500;">Ու՞մ կողմից եք հրավիրված</p>
+            <div style="margin-bottom: 20px;">
+                <label style="margin-right: 20px;"><input type="radio" name="side" value="Փեսայի"> Փեսայի</label>
+                <label><input type="radio" name="side" value="Հարսի"> Հարսի</label>
+            </div>
+
+            <input type="number" id="count" class="input-style" placeholder="Հյուրերի քանակ">
+            <textarea id="msg" class="input-style" style="height: 90px; border-radius: 20px; resize: none; padding-top: 15px;" placeholder="Լրացուցիչ նշումներ"></textarea>
+
+            <button onclick="sendRSVP()" id="submit-btn" class="submit-btn">Ուղարկել Պատասխանը</button>
+        </div>
+    </section>
+
+    <script>
+        const music = document.getElementById("weddingMusic");
+        function toggleMusic() { 
+            if (music.paused) { music.play(); document.getElementById("musicControl").classList.add("music-playing"); } 
+            else { music.pause(); document.getElementById("musicControl").classList.remove("music-playing"); } 
+        }
+        document.addEventListener('click', () => { if(music.paused) toggleMusic(); }, {once: true});
+
+        async function sendRSVP() {
+            const btn = document.getElementById('submit-btn');
+            const name = document.getElementById('name').value;
+            const att = document.querySelector('input[name="att"]:checked')?.value;
+            const side = document.querySelector('input[name="side"]:checked')?.value;
+            const count = document.getElementById('count').value || "1";
+            const message = document.getElementById('msg').value;
+
+            if(!name || !att || !side) {
+                alert("Խնդրում ենք լրացնել բոլոր անհրաժեշտ դաշտերը:");
+                return;
+            }
+
+            btn.innerText = "Ուղարկվում է...";
+            btn.disabled = true;
+
+            // СЮДА НУЖНО ВСТАВИТЬ ССЫЛКУ ОТ НОВОЙ GOOGLE ТАБЛИЦЫ ДЛЯ ИЛЬИ И ЛИЛИТ
+            const scriptURL = 'YOUR_NEW_GOOGLE_SCRIPT_URL_HERE';
+
+            try {
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, attendance: att, side, count, message })
+                });
+                
+                document.getElementById('rsvp-area').innerHTML = `
+                    <div style="text-align:center; padding: 40px 0;">
+                        <h3 style="color: var(--accent-gold); font-family: 'Playfair Display', serif; font-size: 1.8rem;">Շնորհակալություն:</h3>
+                        <p style="font-size: 1.1rem;">Ձեր պատասխանը հաջողությամբ գրանցվեց:</p>
+                    </div>`;
+            } catch (error) {
+                alert("Տեղի է ունեցել սխալ: Խնդրում ենք փорձել կրկին:");
+                btn.innerText = "Ուղարկել Պատասխանը";
+                btn.disabled = false;
+            }
+        }
+
+        // ТАЙМЕР НАСТРОЕН НА 1 АВГУСТА 2026, 14:00 (Год, Месяц с 0, Число, Часы...)
+        const target = new Date(2026, 7, 1, 14, 0, 0).getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = target - now;
+            document.getElementById("days").innerText = Math.max(0, Math.floor(d / 86400000)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.max(0, Math.floor((d % 86400000) / 3600000)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.max(0, Math.floor((d % 3600000) / 60000)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.max(0, Math.floor((d % 60000) / 1000)).toString().padStart(2, '0');
+        }, 1000);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
