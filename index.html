@@ -15,26 +15,21 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
         
+        /* Убрали жесткие min-height: 100vh везде, чтобы избавиться от пустых гэпов */
         section { 
             width: 100%; 
-            min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
             position: relative; 
-            padding: 40px 20px;
+            padding: 35px 20px;
         }
 
-        /* Уменьшенная секция для таймера на половину экрана */
-        section.half-screen {
-            min-height: 50vh;
-            padding: 20px;
-            background: #ffffff;
-        }
+        .hero-section { height: 100vh; justify-content: space-between; padding: 50px 25px 40px 25px; }
 
-        .reveal { opacity: 0; transform: translateY(25px); transition: all 1s ease-out; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; width: 40px; height: 40px; background: rgba(255,255,255,0.8); border: 1px solid #ddd; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 1.1rem; }
@@ -42,67 +37,65 @@
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* PAGE 1: HERO */
-        .hero-section { background: #1a1a1a; color: white; justify-content: space-between; padding: 50px 25px 40px 25px; }
         .bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
         .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         
-        /* Изменено движение: Слева направо с сильным наложением (плавный каскад) */
         .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; overflow: hidden; }
         .date-part { opacity: 0; transform: translateX(-100%); animation: fadeInLeftFlow 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
         .dp-1 { animation-delay: 0.2s; }
-        .dp-2 { animation-delay: 0.5s; } /* Вторая вылетает, пока первая еще движется */
-        .dp-3 { animation-delay: 0.8s; } /* Третья вылетает, пока вторая еще движется */
+        .dp-2 { animation-delay: 0.5s; } 
+        .dp-3 { animation-delay: 0.8s; } 
         @keyframes fadeInLeftFlow { to { opacity: 1; transform: translateX(0); } }
 
-        /* Изменено движение: Снизу вверх для имен */
         .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; }
         @keyframes fadeInUpNames { to { opacity: 1; transform: translateY(0); } }
 
-        /* TIMER STYLE (БЕЗ ФОНА) */
-        .timer-card { background: transparent; padding: 10px 20px; max-width: 340px; width: 100%; z-index: 2; }
-        .timer-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; }
+        /* TIMER STYLE */
+        .timer-card { background: #ffffff; padding: 30px 20px; max-width: 350px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .timer-container { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 15px 0 25px 0; }
         .timer-block { display: flex; flex-direction: column; width: 45px; }
         .timer-num { font-size: 2.2rem; font-weight: 300; font-family: sans-serif; line-height: 1; color: var(--text-dark); }
-        .timer-colon { font-size: 1.8rem; font-weight: 300; color: #777; margin-bottom: 18px; }
-        .timer-label { font-size: 0.85rem; color: #555; margin-top: 6px; }
+        .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
+        .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* PHOTOS SYSTEM */
-        .photos-grid { display: flex; gap: 10px; width: 100%; max-width: 360px; height: 50vh; margin-bottom: 20px; }
-        .half-photo { flex: 1; background-size: cover; background-position: center; border-radius: 4px; }
+        /* NEW СТИЛЬНЫЙ КОЛЛАЖ (Журнальная верстка) */
+        .collage-container { position: relative; width: 100%; max-width: 340px; height: 380px; margin: 15px 0; }
+        .collage-photo { position: absolute; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.07); border: 4px solid #fff; }
+        .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
+        .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
 
         /* PAGE 4: CALENDAR */
-        .calendar-box { width: 100%; max-width: 320px; margin-top: 10px; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 6px; font-size: 1rem; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-family: sans-serif; }
+        .calendar-box { width: 100%; max-width: 320px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 6px; font-size: 1rem; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e5e5e5; font-family: sans-serif; }
         .weekday { font-size: 0.75rem; color: #777; text-transform: uppercase; font-family: 'Playfair Display', serif; }
         .calend-day { padding: 5px 0; color: #333; position: relative; display: flex; justify-content: center; align-items: center; }
         
-        /* Замена круга на СЕРДЕЧКО для цифры 8 */
         .wedding-active-day { color: #fff; font-weight: bold; z-index: 1; }
         .wedding-active-day::before { 
             content: '♥'; 
             position: absolute; 
             font-size: 2.6rem; 
             color: #ff7b93; 
-            opacity: 0.75; 
+            opacity: 0.85; 
             z-index: -1; 
-            top: 48%; 
+            top: 45%; 
             left: 50%; 
             transform: translate(-50%, -50%); 
         }
 
         /* TIMELINE SYSTEM */
-        .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 20px; }
-        .t-item { margin-bottom: 35px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        .t-time { font-size: 1.8rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; margin-bottom: 2px; }
-        .t-title { font-size: 1.15rem; font-weight: 400; letter-spacing: 1px; color: #111; margin-bottom: 4px; font-family: 'Playfair Display', serif;}
+        .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 15px; }
+        .t-item { margin-bottom: 25px; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .t-time { font-size: 1.7rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; margin-bottom: 2px; }
+        .t-title { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; color: #111; margin-bottom: 4px; font-family: 'Playfair Display', serif;}
         .t-desc { font-size: 0.95rem; color: #555; max-width: 260px; line-height: 1.4; margin-bottom: 6px; }
         .t-map { color: var(--accent-gold); font-size: 0.85rem; text-decoration: none; border-bottom: 1px solid; letter-spacing: 1px; text-transform: uppercase; }
-        .t-arrow { width: 14px; height: 25px; margin: 10px auto; opacity: 0.3; }
+        .t-arrow { width: 14px; height: 20px; margin: 5px auto; opacity: 0.25; }
 
         /* RSVP */
-        .rsvp-card { background: var(--card-bg); padding: 35px 20px; border-radius: 15px; width: 100%; max-width: 340px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-        .input-field { width: 100%; padding: 14px; border: 1px solid #e2e2e2; border-radius: 25px; background: #fdfdfd; margin-bottom: 15px; outline: none; font-family: inherit; font-size: 1rem; }
-        .radio-set { display: flex; gap: 15px; margin: 10px 0 20px 5px; }
+        .rsvp-card { background: var(--card-bg); padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 340px; text-align: left; box-shadow: 0 6px 25px rgba(0,0,0,0.04); }
+        .input-field { width: 100%; padding: 14px; border: 1px solid #e2e2e2; border-radius: 25px; background: #fdfdfd; margin-bottom: 12px; outline: none; font-family: inherit; font-size: 1rem; }
+        .radio-set { display: flex; gap: 15px; margin: 8px 0 18px 5px; }
         .radio-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; cursor: pointer; }
         .black-action-btn { width: 100%; padding: 16px; background: #1a1a1a; color: #fff; border: none; border-radius: 25px; font-size: 1.05rem; cursor: pointer; }
     </style>
@@ -124,9 +117,9 @@
         </div>
     </section>
 
-    <section class="half-screen">
+    <section style="background: #ffffff; padding: 45px 20px 25px 20px;">
         <div class="timer-card reveal">
-            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; margin-bottom: 5px;">Միջոցառմանը մնաց</div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin-bottom: 5px; color: #666;">Միջոցառմանը մնաց</div>
             
             <div class="timer-container">
                 <div class="timer-block"><span class="timer-num" id="days">00</span><span class="timer-label">օր</span></div>
@@ -138,27 +131,27 @@
                 <div class="timer-block"><span class="timer-num" id="seconds">00</span><span class="timer-label">վրկ</span></div>
             </div>
 
-            <div style="font-size: 1.35rem; font-style: italic; margin-bottom: 12px; font-weight: 400; color: #111;">Սիրելի ընկերներ և բարեկամներ,</div>
-            <p style="line-height: 1.5; font-size: 1.1rem; color: #444;">
+            <div style="font-size: 1.35rem; font-style: italic; margin-bottom: 10px; font-weight: 400; color: #111;">Սիրելի ընկերներ և բարեկամներ,</div>
+            <p style="line-height: 1.5; font-size: 1.05rem; color: #555;">
                 Սրտանց հրավիրում ենք Ձեզ մեզ հետ միասին տոնելու մեր կյանքի ամենակարևոր և գեղեցիկ օրը:
             </p>
         </div>
     </section>
 
-    <section style="background-color: var(--bg-story);">
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="photos-grid">
-                <div class="half-photo" style="background-image: url('IMG_5571.JPG');"></div>
-                <div class="half-photo" style="background-image: url('IMG_5569.JPG');"></div>
+            <div class="collage-container">
+                <div class="collage-photo photo-large" style="background-image: url('IMG_5571.JPG');"></div>
+                <div class="collage-photo photo-small" style="background-image: url('IMG_5569.JPG');"></div>
             </div>
-            <p style="font-size: 1.4rem; font-style: italic; color: #333; margin-top: 10px;">Մենք սպասում ենք Ձեզ</p>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px;">Մենք սպասում ենք Ձեզ</p>
         </div>
     </section>
 
-    <section style="background-color: var(--bg-story);">
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal calendar-box">
-            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-style: italic; font-weight: 300; margin-bottom: 5px;">Պահպանիր օրը</h2>
-            <p style="font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; color: #666; margin-bottom: 20px;">ՕԳՈՍՏՈՍ 2026</p>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; font-weight: 300; margin-bottom: 3px;">Պահպանիր օրը</h2>
+            <p style="font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; color: #777; margin-bottom: 15px;">ՕԳՈՍՏՈՍ 2026</p>
             
             <div class="calendar-grid">
                 <div class="weekday">Su</div><div class="weekday">Mo</div><div class="weekday">Tu</div><div class="weekday">We</div><div class="weekday">Th</div><div class="weekday">Fr</div><div class="weekday">Sa</div>
@@ -171,9 +164,9 @@
         </div>
     </section>
 
-    <section style="background-color: var(--bg-story);">
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-style: italic; margin-bottom: 25px;">Օրվա Ծրագիրը</h2>
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-style: italic; margin-bottom: 20px;">Օրվա Ծրագիրը</h2>
             
             <div class="t-line">
                 <div class="t-item">
@@ -213,19 +206,19 @@
         </div>
     </section>
 
-    <section style="background-color: var(--bg-story);">
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="photos-grid">
-                <div class="half-photo" style="background-image: url('IMG_5533.JPG');"></div>
-                <div class="half-photo" style="background-image: url('IMG_5535.JPG');"></div>
+            <div class="collage-container">
+                <div class="collage-photo photo-large" style="background-image: url('IMG_5533.JPG');"></div>
+                <div class="collage-photo photo-small" style="background-image: url('IMG_5535.JPG');"></div>
             </div>
-            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 10px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
         </div>
     </section>
 
-    <section style="background-color: var(--bg-story);">
+    <section style="background-color: var(--bg-story); padding: 25px 20px 45px 20px;">
         <div class="rsvp-card reveal" id="rsvp-area">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.3rem; text-align: center; margin-bottom: 20px; font-weight: 400;">Հաստատեք Ձեր ներկայությունը մինչև հուլիսի 20-ը</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; text-align: center; margin-bottom: 20px; font-weight: 400; line-height: 1.4;">Հաստատեք Ձեր ներկայությունը մինչև հուլիսի 20-ը</h2>
             
             <input type="text" id="name" class="input-field" placeholder="Անուն Ազգանուն">
 
@@ -284,8 +277,8 @@
                 });
                 
                 document.getElementById('rsvp-area').innerHTML = `
-                    <div style="text-align:center; padding: 30px 0;">
-                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 10px;">Շնորհակալություն:</h3>
+                    <div style="text-align:center; padding: 20px 0;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px;">Շնորհակալություն:</h3>
                         <p>Ձեր պատասխանը հաջողությամբ գրանցվեց:</p>
                     </div>`;
             } catch (error) {
