@@ -15,7 +15,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
         
-        /* Убрали жесткие min-height: 100vh везде, чтобы избавиться от пустых гэпов */
+        /* Compact sections to remove gaps */
         section { 
             width: 100%; 
             display: flex; 
@@ -58,13 +58,19 @@
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
         .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* NEW СТИЛЬНЫЙ КОЛЛАЖ (Журнальная верстка) */
+        /* REVISED COLLAGE STYLE (Magazine layout) */
         .collage-container { position: relative; width: 100%; max-width: 340px; height: 380px; margin: 15px 0; }
         .collage-photo { position: absolute; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.07); border: 4px solid #fff; }
         .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
         .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
 
-        /* PAGE 4: CALENDAR */
+        /* NEW ROTATED COLLAGE (PAGE 6) */
+        .collage-rotated-container { display: flex; justify-content: center; align-items: center; width: 100%; max-width: 360px; height: 300px; margin: 15px 0; }
+        .collage-photo-rotated { width: 45%; height: 100%; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.07); border: 4px solid #fff; }
+        .rotated-left { transform: rotate(-8deg); margin-right: 5px; }
+        .rotated-right { transform: rotate(8deg); margin-left: 5px; }
+
+        /* PAGE 4: CALENDAR WITH HEART ICON */
         .calendar-box { width: 100%; max-width: 320px; }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 6px; font-size: 1rem; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e5e5e5; font-family: sans-serif; }
         .weekday { font-size: 0.75rem; color: #777; text-transform: uppercase; font-family: 'Playfair Display', serif; }
@@ -208,9 +214,9 @@
 
     <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="collage-container">
-                <div class="collage-photo photo-large" style="background-image: url('IMG_5533.JPG');"></div>
-                <div class="collage-photo photo-small" style="background-image: url('IMG_5535.JPG');"></div>
+            <div class="collage-rotated-container">
+                <div class="collage-photo-rotated rotated-left" style="background-image: url('IMG_5533.JPG');"></div>
+                <div class="collage-photo-rotated rotated-right" style="background-image: url('IMG_5535.JPG');"></div>
             </div>
             <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
         </div>
@@ -282,7 +288,7 @@
                         <p>Ձեր պատասխանը հաջողությամբ գրանցվեց:</p>
                     </div>`;
             } catch (error) {
-                alert("Սխал է տեղի ունեցել: Փորձեք կրկին:");
+                alert("Սխալ է տեղի ունեցել: Փորձեք կրկին:");
                 btn.innerText = "Պատասխանել";
                 btn.disabled = false;
             }
