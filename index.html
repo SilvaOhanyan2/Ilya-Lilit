@@ -24,7 +24,14 @@
             justify-content: center; 
             text-align: center; 
             position: relative; 
-            padding: 60px 20px;
+            padding: 40px 20px;
+        }
+
+        /* Уменьшенная секция для таймера на половину экрана */
+        section.half-screen {
+            min-height: 50vh;
+            padding: 20px;
+            background: #ffffff;
         }
 
         .reveal { opacity: 0; transform: translateY(25px); transition: all 1s ease-out; }
@@ -35,28 +42,32 @@
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* PAGE 1: HERO */
-        .hero-section { background: #1a1a1a; color: white; justify-content: space-between; padding: 50px 25px 30px 25px; }
+        .hero-section { background: #1a1a1a; color: white; justify-content: space-between; padding: 50px 25px 40px 25px; }
         .bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
         .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         
-        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; }
-        .date-part { opacity: 0; transform: translateY(-20px); animation: fadeInDown 0.8s forwards; }
-        .dp-1 { animation-delay: 0.3s; }
-        .dp-2 { animation-delay: 0.9s; }
-        .dp-3 { animation-delay: 1.5s; }
-        @keyframes fadeInDown { to { opacity: 1; transform: translateY(0); } }
-        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; }
+        /* Изменено движение: Слева направо с сильным наложением (плавный каскад) */
+        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; overflow: hidden; }
+        .date-part { opacity: 0; transform: translateX(-100%); animation: fadeInLeftFlow 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
+        .dp-1 { animation-delay: 0.2s; }
+        .dp-2 { animation-delay: 0.5s; } /* Вторая вылетает, пока первая еще движется */
+        .dp-3 { animation-delay: 0.8s; } /* Третья вылетает, пока вторая еще движется */
+        @keyframes fadeInLeftFlow { to { opacity: 1; transform: translateX(0); } }
 
-        /* PAGE 2: TIMER IN PHOTO */
-        .timer-card { background: rgba(255, 255, 255, 0.88); padding: 40px 20px; border-radius: 20px; max-width: 340px; width: 90%; box-shadow: 0 15px 35px rgba(0,0,0,0.1); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); z-index: 2; }
-        .timer-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 25px 0; }
+        /* Изменено движение: Снизу вверх для имен */
+        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; }
+        @keyframes fadeInUpNames { to { opacity: 1; transform: translateY(0); } }
+
+        /* TIMER STYLE (БЕЗ ФОНА) */
+        .timer-card { background: transparent; padding: 10px 20px; max-width: 340px; width: 100%; z-index: 2; }
+        .timer-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 20px 0; }
         .timer-block { display: flex; flex-direction: column; width: 45px; }
-        .timer-num { font-size: 2.2rem; font-weight: 300; font-family: sans-serif; line-height: 1; }
+        .timer-num { font-size: 2.2rem; font-weight: 300; font-family: sans-serif; line-height: 1; color: var(--text-dark); }
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #777; margin-bottom: 18px; }
         .timer-label { font-size: 0.85rem; color: #555; margin-top: 6px; }
 
         /* PHOTOS SYSTEM */
-        .photos-grid { display: flex; gap: 10px; width: 100%; max-width: 360px; height: 55vh; margin-bottom: 20px; }
+        .photos-grid { display: flex; gap: 10px; width: 100%; max-width: 360px; height: 50vh; margin-bottom: 20px; }
         .half-photo { flex: 1; background-size: cover; background-position: center; border-radius: 4px; }
 
         /* PAGE 4: CALENDAR */
@@ -64,8 +75,20 @@
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 6px; font-size: 1rem; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd; font-family: sans-serif; }
         .weekday { font-size: 0.75rem; color: #777; text-transform: uppercase; font-family: 'Playfair Display', serif; }
         .calend-day { padding: 5px 0; color: #333; position: relative; display: flex; justify-content: center; align-items: center; }
-        .wedding-active-day { color: #fff; font-weight: bold; }
-        .wedding-active-day::before { content: ''; position: absolute; width: 36px; height: 36px; background-color: #ff7b93; opacity: 0.75; border-radius: 50%; z-index: -1; }
+        
+        /* Замена круга на СЕРДЕЧКО для цифры 8 */
+        .wedding-active-day { color: #fff; font-weight: bold; z-index: 1; }
+        .wedding-active-day::before { 
+            content: '♥'; 
+            position: absolute; 
+            font-size: 2.6rem; 
+            color: #ff7b93; 
+            opacity: 0.75; 
+            z-index: -1; 
+            top: 48%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
 
         /* TIMELINE SYSTEM */
         .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 20px; }
@@ -82,9 +105,6 @@
         .radio-set { display: flex; gap: 15px; margin: 10px 0 20px 5px; }
         .radio-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; cursor: pointer; }
         .black-action-btn { width: 100%; padding: 16px; background: #1a1a1a; color: #fff; border: none; border-radius: 25px; font-size: 1.05rem; cursor: pointer; }
-
-        .scroll-arrow { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); font-size: 0.75rem; letter-spacing: 3px; opacity: 0.5; animation: bounce 2s infinite; z-index: 5; }
-        @keyframes bounce { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -6px); } }
     </style>
 </head>
 <body>
@@ -100,15 +120,13 @@
                 <span class="date-part dp-2">08</span>
                 <span class="date-part dp-3">26</span>
             </div>
-            <div class="couple-names">Գոռ & Ալյոնա</div>
+            <div class="couple-names">Իլյա & Լիլիթ</div>
         </div>
-        <div class="scroll-arrow">SCROLL</div>
     </section>
 
-    <section style="background: #222; color: #333;">
-        <div class="bg-img" style="background-image: url('IMG_5593.JPG'); opacity: 0.55;"></div>
+    <section class="half-screen">
         <div class="timer-card reveal">
-            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; margin-bottom: 15px;">Միջոցառմանը մնաց</div>
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; margin-bottom: 5px;">Միջոցառմանը մնաց</div>
             
             <div class="timer-container">
                 <div class="timer-block"><span class="timer-num" id="days">00</span><span class="timer-label">օր</span></div>
@@ -125,7 +143,6 @@
                 Սրտանց հրավիրում ենք Ձեզ մեզ հետ միասին տոնելու մեր կյանքի ամենակարևոր և գեղեցիկ օրը:
             </p>
         </div>
-        <div class="scroll-arrow" style="color: white;">SCROLL</div>
     </section>
 
     <section style="background-color: var(--bg-story);">
@@ -136,7 +153,6 @@
             </div>
             <p style="font-size: 1.4rem; font-style: italic; color: #333; margin-top: 10px;">Մենք սպասում ենք Ձեզ</p>
         </div>
-        <div class="scroll-arrow" style="color: #000;">SCROLL</div>
     </section>
 
     <section style="background-color: var(--bg-story);">
@@ -153,7 +169,6 @@
                 <div class="calend-day">9</div><div class="calend-day">10</div><div class="calend-day">11</div><div class="calend-day">12</div><div class="calend-day">13</div><div class="calend-day">14</div><div class="calend-day">15</div><div class="calend-day">16</div><div class="calend-day">17</div><div class="calend-day">18</div><div class="calend-day">19</div><div class="calend-day">20</div><div class="calend-day">21</div><div class="calend-day">22</div><div class="calend-day">23</div><div class="calend-day">24</div><div class="calend-day">25</div><div class="calend-day">26</div><div class="calend-day">27</div><div class="calend-day">28</div><div class="calend-day">29</div><div class="calend-day">30</div><div class="calend-day">31</div>
             </div>
         </div>
-        <div class="scroll-arrow" style="color: #000;">SCROLL</div>
     </section>
 
     <section style="background-color: var(--bg-story);">
@@ -165,7 +180,7 @@
                     <span class="t-time">10:30</span>
                     <h3 class="t-title">Փեսայի Տուն</h3>
                     <p class="t-desc">Զաքարյա Քանաքեռզու 106/1</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Զաքարյա+Քանաքեռզու+106/1" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Զաքարյա+Քանաքեռզու+106/1" target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
@@ -174,7 +189,7 @@
                     <span class="t-time">11:30</span>
                     <h3 class="t-title">Հարսի Տուն</h3>
                     <p class="t-desc">Բաշինջաղյան 1 նրբ. 14շ.</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Բաշինջաղյան+1+նրբ.+14շ" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Բաշինջաղյան+1+նրբ.+14շ." target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
@@ -183,7 +198,7 @@
                     <span class="t-time">13:30</span>
                     <h3 class="t-title">Եկեղեցի</h3>
                     <p class="t-desc">ք. Աբովյան, Սուրբ Հովհաննես Մկրտիչ</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=ք.+Աբովյան+Սուրբ+Հովհաննես+Մկրտիչ" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Սուրբ+Հովհաննես+Մկրտիչ+եկեղեցի+Աբովյան" target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
@@ -192,11 +207,10 @@
                     <span class="t-time">17:00</span>
                     <h3 class="t-title">Ռեստորան</h3>
                     <p class="t-desc">Պտղնի 5 փ. 1/3, Maestro Hall</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Պտղնի+5+փ.+1/3+Maestro+hall" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Maestro+Hall+Պտղնի" target="_blank" class="t-map">Քարտեզ</a>
                 </div>
             </div>
         </div>
-        <div class="scroll-arrow" style="color: #000;">SCROLL</div>
     </section>
 
     <section style="background-color: var(--bg-story);">
@@ -207,7 +221,6 @@
             </div>
             <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 10px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
         </div>
-        <div class="scroll-arrow" style="color: #000;">SCROLL</div>
     </section>
 
     <section style="background-color: var(--bg-story);">
@@ -259,7 +272,6 @@
             btn.innerText = "Ուղարկվում է...";
             btn.disabled = true;
 
-            // Сюда вставь URL развернутого Веб-приложения макроса из Google Таблиц
             const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
 
             try {
@@ -277,13 +289,12 @@
                         <p>Ձեր պատասխանը հաջողությամբ գրանցվեց:</p>
                     </div>`;
             } catch (error) {
-                alert("Սխալ է тեղի ունեցել: Փորձեք կրկին:");
+                alert("Սխал է տեղի ունեցել: Փորձեք կրկին:");
                 btn.innerText = "Պատասխանել";
                 btn.disabled = false;
             }
         }
 
-        // ТАЙМЕР НА 8 ԱՎԳՈՒՍՏԻ 2026
         const target = new Date(2026, 7, 8, 10, 30, 0).getTime();
         setInterval(() => {
             const now = new Date().getTime();
