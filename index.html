@@ -1,196 +1,335 @@
-<style>
-        /* New Premium Timeline Styles */
-        .timeline-section {
-            background-color: var(--bg-story);
-            padding: 50px 20px;
-            width: 100%;
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Իլյա & Լիլիթ | 01.08.2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --text-dark: #2d2d2d; 
+            --accent-gold: #c5a36b; 
+            --bg-story: #f4f4f4; 
+            --card-bg: #ffffff;
         }
-        .timeline-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            font-style: italic;
-            font-weight: 300;
-            color: var(--text-dark);
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-        }
-        .timeline-container {
-            position: relative;
-            max-width: 360px;
-            width: 100%;
-            margin: 0 auto;
-            padding-left: 20px; /* Space for the spine line */
-        }
-        /* Vertical spine line */
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 15px;
-            bottom: 15px;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, #c5a36b 15%, #c5a36b 85%, transparent);
-            opacity: 0.5;
-        }
-        .timeline-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            margin-bottom: 35px;
-            position: relative;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.02);
-        }
-        /* Connection node on the spine */
-        .timeline-card::before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            top: 24px;
-            width: 9px;
-            height: 9px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px #ffffff;
-            z-index: 2;
-        }
-        /* Strict Image Frame Container */
-        .card-image-frame {
-            width: 100%;
-            aspect-ratio: 16 / 10; /* Perfectly proportioned wide frame */
-            overflow: hidden;
-            background-color: #eaeaea;
-            position: relative;
-        }
-        .card-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Prevents compression or distortion */
-            object-position: center;
-            display: block;
-        }
-        /* Text Information Layout */
-        .card-info-box {
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .card-header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 8px;
-            margin-bottom: 4px;
-        }
-        .card-time {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            color: var(--accent-gold);
-            font-weight: 400;
-        }
-        .card-event-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: #111111;
-            letter-spacing: 0.5px;
-        }
-        .card-address {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
-            color: #666666;
-            line-height: 1.4;
-        }
-        /* Stylized Action Navigation Button */
-        .map-action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 8px;
-            padding: 10px 16px;
-            background-color: #fcfcfc;
-            border: 1px solid #e5e5e5;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            border-radius: 6px;
-            transition: all 0.25s ease;
-        }
-        .map-action-btn:hover, .map-action-btn:active {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            border-color: #1a1a1a;
-        }
-    </style>
-
-    <section class="timeline-section">
-        <h2 class="timeline-title reveal">Օրվա Ծրագիրը</h2>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
         
-        <div class="timeline-container">
-            
-            <div class="timeline-card reveal">
-                <div class="card-image-frame">
-                    <img src="pesa.jpg" alt="Փեսայի Տուն">
-                </div>
-                <div class="card-info-box">
-                    <div class="card-header-row">
-                        <h3 class="card-event-title">Փեսայի Տուն</h3>
-                        <span class="card-time">10:30</span>
-                    </div>
-                    <p class="card-address">106/1 Zakaria Kanakertsi Street, Yerevan</p>
-                    <a href="https://www.google.com/maps/search/106%2F1+Zakaria+Kanakertsi+Street,+%D0%95%D1%80%D0%B5%D0%B2%D0%B0%D0%BD/@40.2195269,44.5301838,15z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-action-btn">Տեսնել Քարտեզում</a>
-                </div>
-            </div>
+        /* Compact sections to remove gaps */
+        section { 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            position: relative; 
+            padding: 35px 20px;
+        }
 
-            <div class="timeline-card reveal">
-                <div class="card-image-frame">
-                    <img src="hars.jpg" alt="Հարսի Տուն">
-                </div>
-                <div class="card-info-box">
-                    <div class="card-header-row">
-                        <h3 class="card-event-title">Հարսի Տուն</h3>
-                        <span class="card-time">11:30</span>
-                    </div>
-                    <p class="card-address">14 Bashinjaghian 1st back, Yerevan</p>
-                    <a href="https://www.google.com/maps/place/14+Bashinjaghian+1st+back,+Yerevan+0088/@40.2030496,44.4614761,17z/data=!3m1!4b1!4m6!3m5!1s0x406abd7d7427dcad:0x6de0c37623ae17bf!8m2!3d40.2030456!4d44.4660895!16s%2Fg%2F11v0cx118z?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-action-btn">Տեսնել Քարտեզում</a>
-                </div>
-            </div>
+        .hero-section { height: 100vh; justify-content: space-between; padding: 50px 25px 40px 25px; }
 
-            <div class="timeline-card reveal">
-                <div class="card-image-frame">
-                    <img src="ekeghgeci.jpeg" alt="Եկեղեցի">
-                </div>
-                <div class="card-info-box">
-                    <div class="card-header-row">
-                        <h3 class="card-event-title">Եկեղեցի</h3>
-                        <span class="card-time">13:30</span>
-                    </div>
-                    <p class="card-address">Saint John the Baptist Church, 12 Russia Street, Abovyan</p>
-                    <a href="https://www.google.com/maps/dir//%D0%A6%D0%B5%D1%80%D0%BA%D0%BE%D0%B2%D1%8C+%D0%A1%D0%B2%D1%8F%D1%82%D0%BE%D0%B3%D0%BE+%D0%98%D0%BE%D0%B0%D0%BD%D0%BD%D0%B0+%D0%9A%D1%80%D0%B5%D1%81%D1%82%D0%B8%D1%82%D0%B5%D0%BB%D1%8F,+12+Russia+Street,+Abovyan+2204/@40.2758969,44.0546915,10z/data=!4m18!1m8!3m7!1s0x406aa1cd852829d9:0xd8c583e01d008291!2z0KbQtdGA0LrQvtCy0Ywg0KHQstGP0YLQvtCz0L4g0JjQvtCw0L3QvdCwINCa0YDQtdGB0YLQuNGC0LXQu9GP!8m2!3d40.2758969!4d44.6314737!15sCh1TYWludCBKb2huIHRoZSBCYXB0aXN0IENodXJjaJIBD2FybWVuaWFuX2NodXJjaOABAA!16s%2Fg%2F11cjkmr2w1!4m8!1m0!1m5!1m1!1s0x406aa1cd852829d9:0xd8c583e01d008291!2m2!1d44.6314737!2d40.2758969!3e3?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-action-btn">Տեսնել Քարտեզում</a>
-                </div>
-            </div>
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-            <div class="timeline-card reveal">
-                <div class="card-image-frame">
-                    <img src="resto.jpeg" alt="Ռեստորան">
-                </div>
-                <div class="card-info-box">
-                    <div class="card-header-row">
-                        <h3 class="card-event-title">Ռեստորան</h3>
-                        <span class="card-time">17:00</span>
-                    </div>
-                    <p class="card-address">Maestro Hall, Verin Ptghni</p>
-                    <a href="https://www.google.com/maps/place/Maestro+Hall/@40.244228,44.5728881,17z/data=!3m1!4b1!4m6!3m5!1s0x406aa26cb142ddb7:0x566a7fa89cedc45d!8m2!3d40.2442239!4d44.575463!16s%2Fg%2F11dzvt6y8j?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-action-btn">Տեսնել Քարտեզում</a>
-                </div>
-            </div>
+        #musicControl { position: fixed; top: 20px; right: 20px; z-index: 1000; width: 40px; height: 40px; background: rgba(255,255,255,0.8); border: 1px solid #ddd; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; font-size: 1.1rem; }
+        .music-playing { animation: spin 4s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
+        /* PAGE 1: HERO */
+        .bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+        
+        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; overflow: hidden; }
+        .date-part { color: #ffffff !important; opacity: 0; transform: translateX(-100%); animation: fadeInLeftFlow 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; text-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+        .dp-1 { animation-delay: 0.2s; }
+        .dp-2 { animation-delay: 0.5s; } 
+        .dp-3 { animation-delay: 0.8s; } 
+        @keyframes fadeInLeftFlow { to { opacity: 1; transform: translateX(0); } }
+
+        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; color: #ffffff !important; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; text-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+        @keyframes fadeInUpNames { to { opacity: 1; transform: translateY(0); } }
+
+        /* TIMER STYLE */
+        .timer-card { background: #ffffff; padding: 30px 20px; max-width: 350px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .timer-container { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 15px 0 25px 0; }
+        .timer-block { display: flex; flex-direction: column; width: 45px; }
+        .timer-num { font-size: 2.2rem; font-weight: 300; font-family: sans-serif; line-height: 1; color: var(--text-dark); }
+        .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
+        .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
+
+        /* REVISED COLLAGE STYLE (Magazine layout) */
+        .collage-container { position: relative; width: 100%; max-width: 340px; height: 380px; margin: 15px 0; }
+        .collage-photo { position: absolute; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.07); border: 4px solid #fff; }
+        .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
+        .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
+
+        /* SEPARATED COLLAGE ENGINE FOR PRE-RSVP IMAGES */
+        .collage-spread .photo-large { left: -15px; top: 0; transform: rotate(-2deg); }
+        .collage-spread .photo-small { right: -15px; bottom: -10px; transform: rotate(3deg); z-index: 2; }
+
+        /* PAGE 4: CALENDAR WITH HEART ICON */
+        .calendar-box { width: 100%; max-width: 320px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 6px; font-size: 1rem; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e5e5e5; font-family: sans-serif; }
+        .weekday { font-size: 0.75rem; color: #777; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+        .calend-day { padding: 5px 0; color: #333; position: relative; display: flex; justify-content: center; align-items: center; }
+        
+        .wedding-active-day { color: #fff; font-weight: bold; z-index: 1; }
+        .wedding-active-day::before { 
+            content: '♥'; 
+            position: absolute; 
+            font-size: 2.6rem; 
+            color: #ff7b93; 
+            opacity: 0.85; 
+            z-index: -1; 
+            top: 45%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+
+        /* TIMELINE SYSTEM WITH GRAPHICS */
+        .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 15px; }
+        .t-item { background: var(--card-bg); border-radius: 16px; overflow: hidden; margin-bottom: 25px; position: relative; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding-bottom: 18px; border: 1px solid rgba(0,0,0,0.03); }
+        .t-img-banner { width: 100%; height: 140px; background-size: cover; background-position: center; margin-bottom: 14px; }
+        .t-time { font-size: 1.7rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; margin-bottom: 2px; }
+        .t-title { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; color: #111; margin-bottom: 4px; font-family: 'Playfair Display', serif;}
+        .t-desc { font-size: 0.95rem; color: #555; max-width: 260px; line-height: 1.4; margin-bottom: 10px; }
+        .t-map { color: var(--accent-gold); font-size: 0.85rem; text-decoration: none; border-bottom: 1px solid; letter-spacing: 1px; text-transform: uppercase; }
+        .t-arrow { width: 14px; height: 20px; margin: -10px auto 15px auto; opacity: 0.25; }
+
+        /* RSVP */
+        .rsvp-card { background: var(--card-bg); padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 340px; text-align: left; box-shadow: 0 6px 25px rgba(0,0,0,0.04); }
+        .input-field { width: 100%; padding: 14px; border: 1px solid #e2e2e2; border-radius: 25px; background: #fdfdfd; margin-bottom: 12px; outline: none; font-family: inherit; font-size: 1rem; }
+        .radio-set { display: flex; gap: 15px; margin: 8px 0 18px 5px; }
+        .radio-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; cursor: pointer; }
+        .black-action-btn { width: 100%; padding: 16px; background: #1a1a1a; color: #fff; border: none; border-radius: 25px; font-size: 1.05rem; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <audio id="weddingMusic" loop><source src="Christina_Perry_-_Thousand_Years_(mp3.pm).mp3" type="audio/mpeg"></audio>
+    <div id="musicControl" onclick="toggleMusic()">♪</div>
+
+    <section class="hero-section">
+        <div class="bg-img" style="background-image: url('IMG_5593.JPG');"></div>
+        <div class="hero-content">
+            <div class="vertical-date">
+                <span class="date-part dp-1">01</span>
+                <span class="date-part dp-2">08</span>
+                <span class="date-part dp-3">26</span>
+            </div>
+            <div class="couple-names">Իլյա & Լիլիթ</div>
         </div>
     </section>
+
+    <section style="background: #ffffff; padding: 45px 20px 25px 20px;">
+        <div class="timer-card reveal">
+            <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin-bottom: 5px; color: #666;">Միջոցառմանը մնաց</div>
+            
+            <div class="timer-container">
+                <div class="timer-block"><span class="timer-num" id="days">00</span><span class="timer-label">օր</span></div>
+                <div class="timer-colon">:</div>
+                <div class="timer-block"><span class="timer-num" id="hours">00</span><span class="timer-label">ժամ</span></div>
+                <div class="timer-colon">:</div>
+                <div class="timer-block"><span class="timer-num" id="minutes">00</span><span class="timer-label">րոպե</span></div>
+                <div class="timer-colon">:</div>
+                <div class="timer-block"><span class="timer-num" id="seconds">00</span><span class="timer-label">վրկ</span></div>
+            </div>
+
+            <div style="font-size: 1.35rem; font-style: italic; margin-bottom: 10px; font-weight: 400; color: #111;">Սիրելի ընկերներ և բարեկամներ,</div>
+            <p style="line-height: 1.5; font-size: 1.05rem; color: #555;">
+                Սրտանց հրավիրում ենք Ձեզ մեզ հետ միասին տոնելու մեր կյանքի ամենակարևոր և գեղեցիկ օրը:
+            </p>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
+        <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="collage-container">
+                <div class="collage-photo photo-large" style="background-image: url('IMG_5571.JPG');"></div>
+                <div class="collage-photo photo-small" style="background-image: url('IMG_5569.JPG');"></div>
+            </div>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px;">Մենք սպասում ենք Ձեզ</p>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
+        <div class="reveal calendar-box">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; font-weight: 300; margin-bottom: 3px;">Պահպանիր օրը</h2>
+            <p style="font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; color: #777; margin-bottom: 15px;">ՕԳՈՍՏՈՍ 2026</p>
+            
+            <div class="calendar-grid">
+                <div class="weekday">Su</div><div class="weekday">Mo</div><div class="weekday">Tu</div><div class="weekday">We</div><div class="weekday">Th</div><div class="weekday">Fr</div><div class="weekday">Sa</div>
+                
+                <div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div>
+                <div class="calend-day wedding-active-day">1</div>
+                <div class="calend-day">2</div><div class="calend-day">3</div><div class="calend-day">4</div><div class="calend-day">5</div><div class="calend-day">6</div><div class="calend-day">7</div>
+                <div class="calend-day">8</div><div class="calend-day">9</div><div class="calend-day">10</div><div class="calend-day">11</div><div class="calend-day">12</div><div class="calend-day">13</div><div class="calend-day">14</div><div class="calend-day">15</div><div class="calend-day">16</div><div class="calend-day">17</div><div class="calend-day">18</div><div class="calend-day">19</div><div class="calend-day">20</div><div class="calend-day">21</div><div class="calend-day">22</div><div class="calend-day">23</div><div class="calend-day">24</div><div class="calend-day">25</div><div class="calend-day">26</div><div class="calend-day">27</div><div class="calend-day">28</div><div class="calend-day">29</div><div class="calend-day">30</div><div class="calend-day">31</div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
+        <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-style: italic; margin-bottom: 20px;">Օրվա Ծրագիրը</h2>
+            
+            <div class="t-line">
+                <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('pesa.jpg');"></div>
+                    <span class="t-time">10:30</span>
+                    <h3 class="t-title">Փեսայի Տուն</h3>
+                    <p class="t-desc">Զաքարյա Քանաքեռզու 106/1</p>
+                    <a href="http://maps.google.com/?q=Զաքարյա+Քանաքեռզու+106/1" target="_blank" class="t-map">Քարտեզ</a>
+                </div>
+
+                <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
+
+                <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('hars.jpg');"></div>
+                    <span class="t-time">11:30</span>
+                    <h3 class="t-title">Հարսի Տուն</h3>
+                    <p class="t-desc">Բաշինջաղյան 1 նրբ. 14շ.</p>
+                    <a href="http://maps.google.com/?q=Բաշինջաղյան+1+նրբ.+14շ." target="_blank" class="t-map">Քարտեզ</a>
+                </div>
+
+                <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
+
+                <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('ekeghgeci.jpeg');"></div>
+                    <span class="t-time">13:30</span>
+                    <h3 class="t-title">Եկեղեցի</h3>
+                    <p class="t-desc">ք. Աբովյան, Սուրբ Հովհաննես Մկրտիչ</p>
+                    <a href="http://maps.google.com/?q=ք.+Աբովյան,+Սուրբ+Հովհաննես+Մկրտիչ" target="_blank" class="t-map">Քարտեզ</a>
+                </div>
+
+                <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
+
+                <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('resto.jpeg');"></div>
+                    <span class="t-time">17:00</span>
+                    <h3 class="t-title">Ռեստորան</h3>
+                    <p class="t-desc">Պտղնի 5 փ. 1/3, Maestro Hall</p>
+                    <a href="http://maps.google.com/?q=Maestro+Hall+Պտղնի" target="_blank" class="t-map">Քարտեզ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-story); padding: 25px 20px;">
+        <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div class="collage-container collage-spread">
+                <div class="collage-photo photo-large" style="background-image: url('IMG_5533.JPG');"></div>
+                <div class="collage-photo photo-small" style="background-image: url('IMG_5535.JPG');"></div>
+            </div>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
+        </div>
+    </section>
+
+    <section style="background-color: var(--bg-story); padding: 25px 20px 45px 20px;">
+        <div class="rsvp-card reveal" id="rsvp-area">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.25rem; text-align: center; margin-bottom: 20px; font-weight: 400; line-height: 1.4;">Հաստատեք Ձեր ներկայությունը մինչև հուլիսի 20-ը</h2>
+            
+            <input type="text" id="name" class="input-field" placeholder="Անուն Ազգանուն">
+
+            <p style="font-size: 0.9rem; font-weight: 600;">Կմասնակցե՞ք միջոցառմանը</p>
+            <div class="radio-set">
+                <label class="radio-item"><input type="radio" name="att" value="Այո"> Այո, սիրով</label>
+                <label class="radio-item"><input type="radio" name="att" value="Ոչ"> Ցավոք, չեմ կարող</label>
+            </div>
+
+            <p style="font-size: 0.9rem; font-weight: 600;">Ու՞մ կողմից եք հրավիրված</p>
+            <div class="radio-set">
+                <label class="radio-item"><input type="radio" name="side" value="Փեսայի"> Փեսայի</label>
+                <label class="radio-item"><input type="radio" name="side" value="Հարսի"> Հարսի</label>
+            </div>
+
+            <input type="number" id="count" class="input-field" placeholder="Հյուրերի քանակ">
+            <input type="text" id="msg" class="input-field" placeholder="Մեկնաբանություն">
+
+            <button onclick="sendRSVP()" id="submit-btn" class="black-action-btn">Պատասխանել</button>
+        </div>
+    </section>
+
+    <script>
+        const music = document.getElementById("weddingMusic");
+        
+        function toggleMusic() { 
+            if (music.paused) { 
+                music.play().then(() => {
+                    document.getElementById("musicControl").classList.add("music-playing");
+                }).catch(err => console.log("Audio play blocked:", err));
+            } else { 
+                music.pause(); 
+                document.getElementById("musicControl").classList.remove("music-playing"); 
+            } 
+        }
+
+        ['click', 'touchstart', 'scroll'].forEach(evt => {
+            document.addEventListener(evt, () => { 
+                if(music.paused) {
+                    music.play().then(() => {
+                        document.getElementById("musicControl").classList.add("music-playing");
+                    }).catch(e => console.log("Context waiting..."));
+                }
+            }, {once: true});
+        });
+
+        async function sendRSVP() {
+            const btn = document.getElementById('submit-btn');
+            const name = document.getElementById('name').value;
+            const att = document.querySelector('input[name="att"]:checked')?.value;
+            const side = document.querySelector('input[name="side"]:checked')?.value;
+            const count = document.getElementById('count').value || "1";
+            const message = document.getElementById('msg').value;
+
+            if(!name || !att || !side) {
+                alert("Խնդրում ենք լրացնել բոլոր անհրաժեշտ դաշտերը:");
+                return;
+            }
+
+            btn.innerText = "Ուղարկվում է...";
+            btn.disabled = true;
+
+            const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+            try {
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    cache: 'no-cache',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, attendance: att, side, count, message })
+                });
+                
+                document.getElementById('rsvp-area').innerHTML = `
+                    <div style="text-align:center; padding: 20px 0;">
+                        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px;">Շնորհակալություն:</h3>
+                        <p>Ձեր պատասխանը հաջողությամբ գրանցվեց:</p>
+                    </div>`;
+            } catch (error) {
+                alert("Սխալ է տեղի ունեցել: Փորձեք կրկին:");
+                btn.innerText = "Պատասխանել";
+                btn.disabled = false;
+            }
+        }
+
+        // Target configuration fixed exclusively for August 1, 2026 (Month index 7 is August)
+        const target = new Date(2026, 7, 1, 10, 30, 0).getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = target - now;
+            document.getElementById("days").innerText = Math.max(0, Math.floor(d / 86400000)).toString().padStart(2, '0');
+            document.getElementById("hours").innerText = Math.max(0, Math.floor((d % 86400000) / 3600000)).toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = Math.max(0, Math.floor((d % 3600000) / 60000)).toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = Math.max(0, Math.floor((d % 60000) / 1000)).toString().padStart(2, '0');
+        }, 1000);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
