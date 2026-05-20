@@ -11,11 +11,11 @@
             --accent-gold: #c5a36b; 
             --bg-story: #f4f4f4; 
             --card-bg: #ffffff;
-            --border-radius-soft: 24px; 
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
         
+        /* Compact sections to remove gaps */
         section { 
             width: 100%; 
             display: flex; 
@@ -37,17 +37,7 @@
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* PAGE 1: HERO (FORCED WHITE TYPOGRAPHY) */
-        .bg-img { 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background-size: cover; 
-            background-position: center; 
-            z-index: 1; 
-            border-radius: 12px;
-        }
+        .bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
         .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         
         .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; overflow: hidden; }
@@ -61,60 +51,21 @@
         @keyframes fadeInUpNames { to { opacity: 1; transform: translateY(0); } }
 
         /* TIMER STYLE */
-        .timer-card { 
-            background: #ffffff; 
-            padding: 30px 20px; 
-            max-width: 350px; 
-            width: 100%; 
-            border-radius: var(--border-radius-soft); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
-        }
+        .timer-card { background: #ffffff; padding: 30px 20px; max-width: 350px; width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .timer-container { display: flex; justify-content: center; align-items: center; gap: 12px; margin: 15px 0 25px 0; }
         .timer-block { display: flex; flex-direction: column; width: 45px; }
         .timer-num { font-size: 2.2rem; font-weight: 300; font-family: sans-serif; line-height: 1; color: var(--text-dark); }
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
         .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* THE ORIGINAL EXCLUSIVE COLLAGE LAYOUT ENGINE */
-        .v-collage-container { 
-            position: relative; 
-            width: 100%; 
-            max-width: 360px; 
-            height: 350px; 
-            margin: 20px auto 10px auto; 
-            display: flex;
-            justify-content: center;
-        }
-        .v-photo { 
-            position: absolute; 
-            width: 54%; 
-            height: 88%; 
-            background-size: cover; 
-            background-position: center; 
-            border: 5px solid #ffffff; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-            border-radius: var(--border-radius-soft); 
-            bottom: 10px;
-        }
-        .v-left { 
-            left: 2%;
-            transform: rotate(-9deg); 
-            transform-origin: bottom right;
-            z-index: 2;
-        }
-        .v-right { 
-            right: 2%;
-            transform: rotate(9deg); 
-            transform-origin: bottom left;
-            z-index: 1;
-        }
+        /* REVISED COLLAGE STYLE (Magazine layout shared across sections) */
+        .collage-container { position: relative; width: 100%; max-width: 340px; height: 380px; margin: 15px 0; }
+        .collage-photo { position: absolute; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.07); border: 4px solid #fff; }
+        .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
+        .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
 
-        /* CALENDAR */
-        .calendar-box { 
-            width: 100%; 
-            max-width: 320px; 
-            border-radius: var(--border-radius-soft); 
-        }
+        /* PAGE 4: CALENDAR WITH HEART ICON */
+        .calendar-box { width: 100%; max-width: 320px; }
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px 6px; font-size: 1rem; margin-top: 15px; padding-top: 15px; border-top: 1px solid #e5e5e5; font-family: sans-serif; }
         .weekday { font-size: 0.75rem; color: #777; text-transform: uppercase; font-family: 'Playfair Display', serif; }
         .calend-day { padding: 5px 0; color: #333; position: relative; display: flex; justify-content: center; align-items: center; }
@@ -132,65 +83,26 @@
             transform: translate(-50%, -50%); 
         }
 
-        /* TIMELINE SYSTEM WITH IMAGES */
+        /* TIMELINE SYSTEM */
         .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 15px; }
-        .t-item { margin-bottom: 35px; position: relative; display: flex; flex-direction: column; align-items: center; }
-        
-        .event-pic {
-            width: 100%;
-            height: 140px;
-            background-size: cover;
-            background-position: center;
-            border-radius: var(--border-radius-soft);
-            margin-bottom: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 2px solid #fff;
-        }
-
+        .t-item { margin-bottom: 25px; position: relative; display: flex; flex-direction: column; align-items: center; }
         .t-time { font-size: 1.7rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; margin-bottom: 2px; }
         .t-title { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; color: #111; margin-bottom: 4px; font-family: 'Playfair Display', serif;}
         .t-desc { font-size: 0.95rem; color: #555; max-width: 260px; line-height: 1.4; margin-bottom: 6px; }
         .t-map { color: var(--accent-gold); font-size: 0.85rem; text-decoration: none; border-bottom: 1px solid; letter-spacing: 1px; text-transform: uppercase; }
-        .t-arrow { width: 14px; height: 20px; margin: 15px auto; opacity: 0.25; }
+        .t-arrow { width: 14px; height: 20px; margin: 5px auto; opacity: 0.25; }
 
-        /* RSVP FORM DESIGN */
-        .rsvp-card { 
-            background: var(--card-bg); 
-            padding: 30px 20px; 
-            border-radius: var(--border-radius-soft); 
-            width: 100%; 
-            max-width: 340px; 
-            text-align: left; 
-            box-shadow: 0 6px 25px rgba(0,0,0,0.04); 
-        }
-        .input-field { 
-            width: 100%; 
-            padding: 14px; 
-            border: 1px solid #e2e2e2; 
-            border-radius: 12px; 
-            background: #fdfdfd; 
-            margin-bottom: 12px; 
-            outline: none; 
-            font-family: inherit; 
-            font-size: 1rem; 
-        }
+        /* RSVP */
+        .rsvp-card { background: var(--card-bg); padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 340px; text-align: left; box-shadow: 0 6px 25px rgba(0,0,0,0.04); }
+        .input-field { width: 100%; padding: 14px; border: 1px solid #e2e2e2; border-radius: 25px; background: #fdfdfd; margin-bottom: 12px; outline: none; font-family: inherit; font-size: 1rem; }
         .radio-set { display: flex; gap: 15px; margin: 8px 0 18px 5px; }
         .radio-item { display: flex; align-items: center; gap: 6px; font-size: 0.95rem; cursor: pointer; }
-        .black-action-btn { 
-            width: 100%; 
-            padding: 16px; 
-            background: #1a1a1a; 
-            color: #fff; 
-            border: none; 
-            border-radius: 12px; 
-            font-size: 1.05rem; 
-            cursor: pointer; 
-        }
+        .black-action-btn { width: 100%; padding: 16px; background: #1a1a1a; color: #fff; border: none; border-radius: 25px; font-size: 1.05rem; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <audio id="weddingMusic" loop><source src="Christina_Perry_-_Thousand_Years_(mp3.pm).mp3" type="audio/mpeg"></audio>
+    <audio id="weddingMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
     <div id="musicControl" onclick="toggleMusic()">♪</div>
 
     <section class="hero-section">
@@ -228,11 +140,11 @@
 
     <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="v-collage-container">
-                <div class="v-photo v-left" style="background-image: url('IMG_5571.JPG');"></div>
-                <div class="v-photo v-right" style="background-image: url('IMG_5569.JPG');"></div>
+            <div class="collage-container">
+                <div class="collage-photo photo-large" style="background-image: url('IMG_5571.JPG');"></div>
+                <div class="collage-photo photo-small" style="background-image: url('IMG_5569.JPG');"></div>
             </div>
-            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 15px;">Մենք սպասում ենք Ձեզ</p>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px;">Մենք սպասում ենք Ձեզ</p>
         </div>
     </section>
 
@@ -258,41 +170,37 @@
             
             <div class="t-line">
                 <div class="t-item">
-                    <div class="event-pic" style="background-image: url('groom_house.jpg');"></div>
                     <span class="t-time">10:30</span>
                     <h3 class="t-title">Փեսայի Տուն</h3>
                     <p class="t-desc">Զաքարյա Քանաքեռզու 106/1</p>
-                    <a href="#" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Զաքարյա+Քանաքեռզու+106/1" target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
-                    <div class="event-pic" style="background-image: url('bride_house.jpg');"></div>
                     <span class="t-time">11:30</span>
                     <h3 class="t-title">Հարսի Տուն</h3>
                     <p class="t-desc">Բաշինջաղյան 1 նրբ. 14շ.</p>
-                    <a href="#" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Բաշինջաղյան+1+նրբ.+14շ." target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
-                    <div class="event-pic" style="background-image: url('church.jpg');"></div>
                     <span class="t-time">13:30</span>
                     <h3 class="t-title">Եկեղեցի</h3>
                     <p class="t-desc">ք. Աբովյան, Սուրբ Հովհաննես Մկրտիչ</p>
-                    <a href="#" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Սուրբ+Հովհաննես+Մկրտիչ+եկեղեցի+Աբովյան" target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
-                    <div class="event-pic" style="background-image: url('restaurant.jpg');"></div>
                     <span class="t-time">17:00</span>
                     <h3 class="t-title">Ռեստորան</h3>
                     <p class="t-desc">Պտղնի 5 փ. 1/3, Maestro Hall</p>
-                    <a href="#" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/?q=Maestro+Hall+Պտղնի" target="_blank" class="t-map">Քարտեզ</a>
                 </div>
             </div>
         </div>
@@ -300,11 +208,11 @@
 
     <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="v-collage-container">
-                <div class="v-photo v-left" style="background-image: url('IMG_5533.JPG');"></div>
-                <div class="v-photo v-right" style="background-image: url('IMG_5535.JPG');"></div>
+            <div class="collage-container">
+                <div class="collage-photo photo-large" style="background-image: url('IMG_5533.JPG');"></div>
+                <div class="collage-photo photo-small" style="background-image: url('IMG_5535.JPG');"></div>
             </div>
-            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 15px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px; font-family: 'Cormorant Garamond', serif;">Սիրով սպասում ենք Ձեզ</p>
         </div>
     </section>
 
@@ -340,20 +248,20 @@
             if (music.paused) { 
                 music.play().then(() => {
                     document.getElementById("musicControl").classList.add("music-playing");
-                }).catch(err => console.log("Playback prevented:", err));
+                }).catch(err => console.log("Audio play blocked:", err));
             } else { 
                 music.pause(); 
                 document.getElementById("musicControl").classList.remove("music-playing"); 
             } 
         }
 
-        // Handle browser restrictive autoplay contexts smoothly
+        // Bypasses browser strict autoplay restrictions dynamically on first user tap/scroll interaction
         ['click', 'touchstart', 'scroll'].forEach(evt => {
             document.addEventListener(evt, () => { 
                 if(music.paused) {
                     music.play().then(() => {
                         document.getElementById("musicControl").classList.add("music-playing");
-                    }).catch(e => console.log("Interaction pending..."));
+                    }).catch(e => console.log("Context waiting..."));
                 }
             }, {once: true});
         });
@@ -397,7 +305,6 @@
             }
         }
 
-        // Live Countdown Calculation Loop
         const target = new Date(2026, 7, 8, 10, 30, 0).getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -408,7 +315,6 @@
             document.getElementById("seconds").innerText = Math.max(0, Math.floor((d % 60000) / 1000)).toString().padStart(2, '0');
         }, 1000);
 
-        // Scroll animations handling trigger
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
