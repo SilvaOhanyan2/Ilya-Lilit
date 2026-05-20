@@ -36,7 +36,7 @@
         .music-playing { animation: spin 4s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* PAGE 1: HERO (FORCED WHITE TYPOGRAPHY) */
+        /* PAGE 1: HERO */
         .bg-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
         .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         
@@ -58,11 +58,15 @@
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
         .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* REVISED COLLAGE STYLE (Magazine layout shared across sections) */
+        /* REVISED COLLAGE STYLE (Magazine layout) */
         .collage-container { position: relative; width: 100%; max-width: 340px; height: 380px; margin: 15px 0; }
         .collage-photo { position: absolute; background-size: cover; background-position: center; border-radius: 2px; box-shadow: 0 8px 20px rgba(0,0,0,0.07); border: 4px solid #fff; }
         .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
         .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
+
+        /* SEPARATED COLLAGE ENGINE FOR PRE-RSVP IMAGES */
+        .collage-spread .photo-large { left: -15px; top: 0; transform: rotate(-2deg); }
+        .collage-spread .photo-small { right: -15px; bottom: -10px; transform: rotate(3deg); z-index: 2; }
 
         /* PAGE 4: CALENDAR WITH HEART ICON */
         .calendar-box { width: 100%; max-width: 320px; }
@@ -83,14 +87,15 @@
             transform: translate(-50%, -50%); 
         }
 
-        /* TIMELINE SYSTEM */
+        /* TIMELINE SYSTEM WITH GRAPHICS */
         .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 15px; }
-        .t-item { margin-bottom: 25px; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .t-item { background: var(--card-bg); border-radius: 16px; overflow: hidden; margin-bottom: 25px; position: relative; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.03); padding-bottom: 18px; border: 1px solid rgba(0,0,0,0.03); }
+        .t-img-banner { width: 100%; height: 140px; background-size: cover; background-position: center; margin-bottom: 14px; }
         .t-time { font-size: 1.7rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; margin-bottom: 2px; }
         .t-title { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; color: #111; margin-bottom: 4px; font-family: 'Playfair Display', serif;}
-        .t-desc { font-size: 0.95rem; color: #555; max-width: 260px; line-height: 1.4; margin-bottom: 6px; }
+        .t-desc { font-size: 0.95rem; color: #555; max-width: 260px; line-height: 1.4; margin-bottom: 10px; }
         .t-map { color: var(--accent-gold); font-size: 0.85rem; text-decoration: none; border-bottom: 1px solid; letter-spacing: 1px; text-transform: uppercase; }
-        .t-arrow { width: 14px; height: 20px; margin: 5px auto; opacity: 0.25; }
+        .t-arrow { width: 14px; height: 20px; margin: -10px auto 15px auto; opacity: 0.25; }
 
         /* RSVP */
         .rsvp-card { background: var(--card-bg); padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 340px; text-align: left; box-shadow: 0 6px 25px rgba(0,0,0,0.04); }
@@ -102,7 +107,7 @@
 </head>
 <body>
 
-    <audio id="weddingMusic" loop><source src="music.mp3" type="audio/mpeg"></audio>
+    <audio id="weddingMusic" loop><source src="Christina_Perry_-_Thousand_Years_(mp3.pm).mp3" type="audio/mpeg"></audio>
     <div id="musicControl" onclick="toggleMusic()">♪</div>
 
     <section class="hero-section">
@@ -170,6 +175,7 @@
             
             <div class="t-line">
                 <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('pesa.jpg');"></div>
                     <span class="t-time">10:30</span>
                     <h3 class="t-title">Փեսայի Տուն</h3>
                     <p class="t-desc">Զաքարյա Քանաքեռզու 106/1</p>
@@ -179,6 +185,7 @@
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('hars.jpg');"></div>
                     <span class="t-time">11:30</span>
                     <h3 class="t-title">Հարսի Տուն</h3>
                     <p class="t-desc">Բաշինջաղյան 1 նրբ. 14շ.</p>
@@ -188,6 +195,7 @@
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('ekeghgeci.jpeg');"></div>
                     <span class="t-time">13:30</span>
                     <h3 class="t-title">Եկեղեցի</h3>
                     <p class="t-desc">ք. Աբովյան, Սուրբ Հովհաննես Մկրտիչ</p>
@@ -197,6 +205,7 @@
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
+                    <div class="t-img-banner" style="background-image: url('resto.jpeg');"></div>
                     <span class="t-time">17:00</span>
                     <h3 class="t-title">Ռեստորան</h3>
                     <p class="t-desc">Պտղնի 5 փ. 1/3, Maestro Hall</p>
@@ -208,7 +217,7 @@
 
     <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="collage-container">
+            <div class="collage-container collage-spread">
                 <div class="collage-photo photo-large" style="background-image: url('IMG_5533.JPG');"></div>
                 <div class="collage-photo photo-small" style="background-image: url('IMG_5535.JPG');"></div>
             </div>
@@ -255,7 +264,6 @@
             } 
         }
 
-        // Bypasses browser strict autoplay restrictions dynamically on first user tap/scroll interaction
         ['click', 'touchstart', 'scroll'].forEach(evt => {
             document.addEventListener(evt, () => { 
                 if(music.paused) {
