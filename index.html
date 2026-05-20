@@ -11,7 +11,7 @@
             --accent-gold: #c5a36b; 
             --bg-story: #f4f4f4; 
             --card-bg: #ffffff;
-            --border-radius-soft: 24px; /* Փափուկ սքուեր անկյուններ */
+            --border-radius-soft: 24px; /* Soft square variable */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
@@ -50,14 +50,15 @@
         }
         .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         
-        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; overflow: hidden; }
+        /* White text color for date and names to match image */
+        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; color: #ffffff; overflow: hidden; }
         .date-part { opacity: 0; transform: translateX(-100%); animation: fadeInLeftFlow 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
         .dp-1 { animation-delay: 0.2s; }
         .dp-2 { animation-delay: 0.5s; } 
         .dp-3 { animation-delay: 0.8s; } 
         @keyframes fadeInLeftFlow { to { opacity: 1; transform: translateX(0); } }
 
-        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; }
+        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; color: #ffffff; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; }
         @keyframes fadeInUpNames { to { opacity: 1; transform: translateY(0); } }
 
         /* TIMER STYLE */
@@ -75,20 +76,7 @@
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
         .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* PAGE 3: ASYMMETRIC COLLAGE 1 */
-        .collage-container { position: relative; width: 100%; max-width: 340px; height: 380px; margin: 15px 0; }
-        .collage-photo { 
-            position: absolute; 
-            background-size: cover; 
-            background-position: center; 
-            border-radius: var(--border-radius-soft); 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.07); 
-            border: 4px solid #fff; 
-        }
-        .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
-        .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
-
-        /* PAGE 6: \/ ԴԱՍԱՎՈՐՈՒԹՅՈՒՆ (ԷՍՔԻԶԻ ՉԱՓՍԵՐՈՎ ՈՒ ՓԱՓՈՒԿ ԱՆԿՅՈՒՆՆԵՐՈՎ) */
+        /* REUSABLE TILTED SOFT-SQUARE DESIGN (USED FOR BOTH PHOTO PAGES NOW) */
         .v-collage-container { 
             position: relative; 
             width: 100%; 
@@ -106,7 +94,7 @@
             background-position: center; 
             border: 5px solid #ffffff; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-            border-radius: var(--border-radius-soft); /* Փափուկ անկյուններ */
+            border-radius: var(--border-radius-soft); 
             bottom: 10px;
         }
         .v-left { 
@@ -149,7 +137,6 @@
         .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 15px; }
         .t-item { margin-bottom: 35px; position: relative; display: flex; flex-direction: column; align-items: center; }
         
-        /* Վայրի նկարի սթայլը ամեն իրադարձությունից առաջ */
         .event-pic {
             width: 100%;
             height: 140px;
@@ -242,11 +229,11 @@
 
     <section style="background-color: var(--bg-story); padding: 25px 20px;">
         <div class="reveal" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div class="collage-container">
-                <div class="collage-photo photo-large" style="background-image: url('IMG_5571.JPG');"></div>
-                <div class="collage-photo photo-small" style="background-image: url('IMG_5569.JPG');"></div>
+            <div class="v-collage-container">
+                <div class="v-photo v-left" style="background-image: url('IMG_5571.JPG');"></div>
+                <div class="v-photo v-right" style="background-image: url('IMG_5569.JPG');"></div>
             </div>
-            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 5px;">Մենք սպասում ենք Ձեզ</p>
+            <p style="font-size: 1.35rem; font-style: italic; color: #444; margin-top: 15px;">Մենք սպասում ենք Ձեզ</p>
         </div>
     </section>
 
