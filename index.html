@@ -114,7 +114,7 @@
         <div class="bg-img" style="background-image: url('IMG_5593.JPG');"></div>
         <div class="hero-content">
             <div class="vertical-date">
-                <span class="date-part dp-1">08</span>
+                <span class="date-part dp-1">01</span>
                 <span class="date-part dp-2">08</span>
                 <span class="date-part dp-3">26</span>
             </div>
@@ -162,9 +162,9 @@
                 <div class="weekday">Su</div><div class="weekday">Mo</div><div class="weekday">Tu</div><div class="weekday">We</div><div class="weekday">Th</div><div class="weekday">Fr</div><div class="weekday">Sa</div>
                 
                 <div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div><div class="calend-day"></div>
-                <div class="calend-day">1</div><div class="calend-day">2</div><div class="calend-day">3</div><div class="calend-day">4</div><div class="calend-day">5</div><div class="calend-day">6</div><div class="calend-day">7</div>
-                <div class="calend-day wedding-active-day">8</div>
-                <div class="calend-day">9</div><div class="calend-day">10</div><div class="calend-day">11</div><div class="calend-day">12</div><div class="calend-day">13</div><div class="calend-day">14</div><div class="calend-day">15</div><div class="calend-day">16</div><div class="calend-day">17</div><div class="calend-day">18</div><div class="calend-day">19</div><div class="calend-day">20</div><div class="calend-day">21</div><div class="calend-day">22</div><div class="calend-day">23</div><div class="calend-day">24</div><div class="calend-day">25</div><div class="calend-day">26</div><div class="calend-day">27</div><div class="calend-day">28</div><div class="calend-day">29</div><div class="calend-day">30</div><div class="calend-day">31</div>
+                <div class="calend-day wedding-active-day">1</div>
+                <div class="calend-day">2</div><div class="calend-day">3</div><div class="calend-day">4</div><div class="calend-day">5</div><div class="calend-day">6</div><div class="calend-day">7</div>
+                <div class="calend-day">8</div><div class="calend-day">9</div><div class="calend-day">10</div><div class="calend-day">11</div><div class="calend-day">12</div><div class="calend-day">13</div><div class="calend-day">14</div><div class="calend-day">15</div><div class="calend-day">16</div><div class="calend-day">17</div><div class="calend-day">18</div><div class="calend-day">19</div><div class="calend-day">20</div><div class="calend-day">21</div><div class="calend-day">22</div><div class="calend-day">23</div><div class="calend-day">24</div><div class="calend-day">25</div><div class="calend-day">26</div><div class="calend-day">27</div><div class="calend-day">28</div><div class="calend-day">29</div><div class="calend-day">30</div><div class="calend-day">31</div>
             </div>
         </div>
     </section>
@@ -313,7 +313,8 @@
             }
         }
 
-        const target = new Date(2026, 7, 8, 10, 30, 0).getTime();
+        // Updated Countdown target parameter from August 8 to August 1st (7 is August)
+        const target = new Date(2026, 7, 1, 10, 30, 0).getTime();
         setInterval(() => {
             const now = new Date().getTime();
             const d = target - now;
