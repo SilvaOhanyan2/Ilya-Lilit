@@ -11,7 +11,7 @@
             --accent-gold: #c5a36b; 
             --bg-story: #f4f4f4; 
             --card-bg: #ffffff;
-            --border-radius-soft: 24px; /* Փափուկ անկյունների չափսը */
+            --border-radius-soft: 24px; /* Փափուկ սքուեր անկյուններ */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
@@ -81,32 +81,32 @@
             position: absolute; 
             background-size: cover; 
             background-position: center; 
-            border-radius: var(--border-radius-soft); /* Փափուկ անկյուններ նկարներին */
+            border-radius: var(--border-radius-soft); 
             box-shadow: 0 8px 20px rgba(0,0,0,0.07); 
             border: 4px solid #fff; 
         }
         .photo-large { width: 65%; height: 75%; left: 0; top: 0; z-index: 1; }
         .photo-small { width: 55%; height: 55%; right: 0; bottom: 0; z-index: 2; }
 
-        /* PAGE 6: \/ ԴԱՍԱՎՈՐՈՒԹՅՈՒՆ ՓԱՓՈՒԿ ԱՆԿՅՈՒՆՆԵՐՈՎ */
+        /* PAGE 6: \/ ԴԱՍԱՎՈՐՈՒԹՅՈՒՆ (ԷՍՔԻԶԻ ՉԱՓՍԵՐՈՎ ՈՒ ՓԱՓՈՒԿ ԱՆԿՅՈՒՆՆԵՐՈՎ) */
         .v-collage-container { 
             position: relative; 
             width: 100%; 
             max-width: 360px; 
-            height: 340px; 
-            margin: 25px auto 15px auto; 
+            height: 350px; 
+            margin: 20px auto 10px auto; 
             display: flex;
             justify-content: center;
         }
         .v-photo { 
             position: absolute; 
-            width: 52%; 
-            height: 85%; 
+            width: 54%; 
+            height: 88%; 
             background-size: cover; 
             background-position: center; 
             border: 5px solid #ffffff; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-            border-radius: var(--border-radius-soft); /* Փափուկ անկյուններ \/ նկարներին */
+            border-radius: var(--border-radius-soft); /* Փափուկ անկյուններ */
             bottom: 10px;
         }
         .v-left { 
@@ -145,14 +145,27 @@
             transform: translate(-50%, -50%); 
         }
 
-        /* TIMELINE SYSTEM */
+        /* TIMELINE SYSTEM WITH IMAGES */
         .t-line { position: relative; width: 100%; max-width: 320px; margin-top: 15px; }
-        .t-item { margin-bottom: 25px; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .t-item { margin-bottom: 35px; position: relative; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Վայրի նկարի սթայլը ամեն իրադարձությունից առաջ */
+        .event-pic {
+            width: 100%;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--border-radius-soft);
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 2px solid #fff;
+        }
+
         .t-time { font-size: 1.7rem; font-weight: 300; font-family: 'Cormorant Garamond', serif; margin-bottom: 2px; }
         .t-title { font-size: 1.1rem; font-weight: 400; letter-spacing: 1px; color: #111; margin-bottom: 4px; font-family: 'Playfair Display', serif;}
         .t-desc { font-size: 0.95rem; color: #555; max-width: 260px; line-height: 1.4; margin-bottom: 6px; }
         .t-map { color: var(--accent-gold); font-size: 0.85rem; text-decoration: none; border-bottom: 1px solid; letter-spacing: 1px; text-transform: uppercase; }
-        .t-arrow { width: 14px; height: 20px; margin: 5px auto; opacity: 0.25; }
+        .t-arrow { width: 14px; height: 20px; margin: 15px auto; opacity: 0.25; }
 
         /* RSVP */
         .rsvp-card { 
@@ -259,37 +272,41 @@
             
             <div class="t-line">
                 <div class="t-item">
+                    <div class="event-pic" style="background-image: url('groom_house.jpg');"></div>
                     <span class="t-time">10:30</span>
                     <h3 class="t-title">Փեսայի Տուն</h3>
                     <p class="t-desc">Զաքարյա Քանաքեռզու 106/1</p>
-                    <a href="https://maps.google.com/?q=Զաքարյա+Քանաքեռզու+106/1" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/..." target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
+                    <div class="event-pic" style="background-image: url('bride_house.jpg');"></div>
                     <span class="t-time">11:30</span>
                     <h3 class="t-title">Հարսի Տուն</h3>
                     <p class="t-desc">Բաշինջաղյան 1 նրբ. 14շ.</p>
-                    <a href="https://maps.google.com/?q=Բաշինջաղյան+1+նրբ.+14շ." target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/..." target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
+                    <div class="event-pic" style="background-image: url('church.jpg');"></div>
                     <span class="t-time">13:30</span>
                     <h3 class="t-title">Եկեղեցի</h3>
                     <p class="t-desc">ք. Աբովյան, Սուրբ Հովհաննես Մկրտիչ</p>
-                    <a href="https://maps.google.com/?q=Սուրբ+Հովհաննես+Մկրտիչ+եկեղեցի+Աբովյան" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/..." target="_blank" class="t-map">Քարտեզ</a>
                 </div>
 
                 <div class="t-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg></div>
 
                 <div class="t-item">
+                    <div class="event-pic" style="background-image: url('restaurant.jpg');"></div>
                     <span class="t-time">17:00</span>
                     <h3 class="t-title">Ռեստորան</h3>
                     <p class="t-desc">Պտղնի 5 փ. 1/3, Maestro Hall</p>
-                    <a href="https://maps.google.com/?q=Maestro+Hall+Պտղնի" target="_blank" class="t-map">Քարտեզ</a>
+                    <a href="https://maps.google.com/..." target="_blank" class="t-map">Քարտեզ</a>
                 </div>
             </div>
         </div>
