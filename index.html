@@ -11,7 +11,7 @@
             --accent-gold: #c5a36b; 
             --bg-story: #f4f4f4; 
             --card-bg: #ffffff;
-            --border-radius-soft: 24px; /* Soft square variable */
+            --border-radius-soft: 24px; 
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body, html { width: 100%; font-family: 'Cormorant Garamond', serif; background-color: var(--bg-story); scroll-behavior: smooth; color: var(--text-dark); overflow-x: hidden; }
@@ -36,7 +36,7 @@
         .music-playing { animation: spin 4s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* PAGE 1: HERO */
+        /* PAGE 1: HERO (FORCED WHITE TEXT) */
         .bg-img { 
             position: absolute; 
             top: 0; 
@@ -50,15 +50,14 @@
         }
         .hero-content { position: relative; z-index: 2; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
         
-        /* White text color for date and names to match image */
-        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; color: #ffffff; overflow: hidden; }
-        .date-part { opacity: 0; transform: translateX(-100%); animation: fadeInLeftFlow 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
+        .vertical-date { text-align: left; display: flex; flex-direction: column; line-height: 0.9; font-family: 'Playfair Display', serif; font-size: 5.5rem; font-weight: 300; margin-top: 20px; color: #ffffff !important; overflow: hidden; }
+        .date-part { color: #ffffff !important; opacity: 0; transform: translateX(-100%); animation: fadeInLeftFlow 0.9s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
         .dp-1 { animation-delay: 0.2s; }
         .dp-2 { animation-delay: 0.5s; } 
         .dp-3 { animation-delay: 0.8s; } 
         @keyframes fadeInLeftFlow { to { opacity: 1; transform: translateX(0); } }
 
-        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; color: #ffffff; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; }
+        .couple-names { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 300; text-align: right; margin-bottom: 20px; color: #ffffff !important; opacity: 0; transform: translateY(40px); animation: fadeInUpNames 1.2s cubic-bezier(0.1, 0.8, 0.2, 1) 1.2s forwards; }
         @keyframes fadeInUpNames { to { opacity: 1; transform: translateY(0); } }
 
         /* TIMER STYLE */
@@ -76,7 +75,7 @@
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
         .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* REUSABLE TILTED SOFT-SQUARE DESIGN (USED FOR BOTH PHOTO PAGES NOW) */
+        /* THE UNIFIED TILTED COLLAGE LOOK (USED FOR BOTH SECTION 3 AND SECTION 6) */
         .v-collage-container { 
             position: relative; 
             width: 100%; 
@@ -191,7 +190,7 @@
 </head>
 <body>
 
-    <audio id="weddingMusic" loop><source src="Christina_Perry_-_Thousand_Years_(mp3.pm)" type="audio/mpeg"></audio>
+    <audio id="weddingMusic" loop><source src="Christina_Perry_-_Thousand_Years_(mp3.pm).mp3" type="audio/mpeg"></audio>
     <div id="musicControl" onclick="toggleMusic()">♪</div>
 
     <section class="hero-section">
