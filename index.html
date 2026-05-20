@@ -75,7 +75,7 @@
         .timer-colon { font-size: 1.8rem; font-weight: 300; color: #aaa; margin-bottom: 14px; }
         .timer-label { font-size: 0.8rem; color: #777; margin-top: 4px; }
 
-        /* REUSABLE COLLAGE SYSTEM FOR INTERTWINED PHOTOS */
+        /* THE ORIGINAL EXCLUSIVE COLLAGE LAYOUT ENGINE */
         .v-collage-container { 
             position: relative; 
             width: 100%; 
@@ -347,13 +347,13 @@
             } 
         }
 
-        // Bypasses restrictive policies by triggering audio on ANY natural guest interaction
+        // Handle browser restrictive autoplay contexts smoothly
         ['click', 'touchstart', 'scroll'].forEach(evt => {
             document.addEventListener(evt, () => { 
                 if(music.paused) {
                     music.play().then(() => {
                         document.getElementById("musicControl").classList.add("music-playing");
-                    }).catch(e => console.log("Autoplay context waiting..."));
+                    }).catch(e => console.log("Interaction pending..."));
                 }
             }, {once: true});
         });
@@ -397,7 +397,7 @@
             }
         }
 
-        // Date Countdown Logic
+        // Live Countdown Calculation Loop
         const target = new Date(2026, 7, 8, 10, 30, 0).getTime();
         setInterval(() => {
             const now = new Date().getTime();
@@ -408,7 +408,7 @@
             document.getElementById("seconds").innerText = Math.max(0, Math.floor((d % 60000) / 1000)).toString().padStart(2, '0');
         }, 1000);
 
-        // Scroll Reveal Elements Engine
+        // Scroll animations handling trigger
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
